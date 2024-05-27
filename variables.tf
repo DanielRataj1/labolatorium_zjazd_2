@@ -1,4 +1,4 @@
-variable "bucket_name" {
-    description = "The name of the S3 bucket"
+variable "D_R_test_bucket" {
+    description = "name of the brucket"
     type        = string
 }

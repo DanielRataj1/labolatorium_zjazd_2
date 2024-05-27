@@ -1,1 +1,1 @@
-bucket_name = "my-test-bucket"
+bucket_name = "D_R_test_bucket"
