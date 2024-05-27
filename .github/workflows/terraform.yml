@@ -1,4 +1,4 @@
-name: Terraform
+name: Simple CI Workflow
 
 on:
   push:
@@ -9,32 +9,25 @@ on:
       - master
 
 jobs:
-  terraform:
+  build:
     runs-on: ubuntu-latest
-
-    services:
-      localstack:
-        image: localstack/localstack
-        ports:
-          - 4566:4566
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          terraform_version: 1.0.0
+          node-version: '20'
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Install dependencies
+        run: |
+          echo "This is where you would install dependencies, e.g., npm install"
 
-      - name: Terraform Validate
-        run: terraform validate
+      - name: Run tests
+        run: |
+          echo "This is where you would run tests, e.g., npm test"
 
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      - name: Success message
+        run: echo "CI pipeline completed successfully!"
